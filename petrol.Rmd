@@ -15,7 +15,8 @@ library(lubridate)
 library(broom)
 
 # Load data
-petrol <- read.csv("~/R_WAS/petrol_info.csv")
+petrol <- read.csv("/Users/morganbrand/Documents/WAS_CT_17/R_WAS/petrol_info.csv")
+#petrol <- read.csv("~/R_WAS/petrol_info.csv")
 
 # Correct date
 petrol$date <- as.Date(petrol$date, "%d-%m-%y")
