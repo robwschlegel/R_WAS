@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+dat<-read.csv("data.csv")
+summary(dat)
+```
+
+```{r}
+needs(tidyr)
+
+needs(lubridate)
+dat$year <- parse_date_time(dat$year, "y", tz = "Africa/Johannesburg")
+
+needs(dplyr)
+data<- dat %>%
+  mutate(field = as.factor(field),
+         variety = as.factor(variety))
+
+
+needs(ggplot2)
+steve <- ggplot(data=data, aes(x=year, y=Hyield, colour = variety)) + 
+  geom_point() +
+  geom_line() +
+  xlab("Year") +
+  theme_bw() +
+  ylab("Yield (kg/hectare)") +
+ # geom_line() +
+  facet_wrap(~ field, ncol = 5) 
+
+ggsave("steve.pdf", dpi = 600)
+  
+```
+
