@@ -9,6 +9,12 @@
   height: 300px !important;
 }
 
+slides > slide:not(.nobackground):before {
+  width: 0px;
+  height: 0px;
+  background-size: 0px 0px;
+}
+
 #nextsteps {
    color: blue;
 }
@@ -16,3 +22,11 @@
 .emphasized {
    font-size: 1.2em;
 }
+
+<style>
+.midcenter {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+</style>

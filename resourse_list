@@ -1,5 +1,8 @@
 # Bookdown and resources
 
+Nature article
+https://www.nature.com/articles/s41559-017-0160
+
 Bookdown getting started:
 https://bookdown.org/
 
@@ -24,6 +27,10 @@ https://ismayc.github.io/moderndiver-book/
 Data Processing with dplyr & tidyr
 https://rpubs.com/bradleyboehmke/data_wrangling
 
+Presentations in R Markdown
+http://data-analytics.net/cep/Schedule_files/presentations_demo.html
+
+
 # Slides and tutorials
 
 ## Tutorials
@@ -32,6 +39,8 @@ http://www.rpubs.com/cismay/imp-tidy
 
 ## Courses
 https://www.datacamp.com/courses/3085
+
+http://stat545.com/
 
 ## Data Import
 

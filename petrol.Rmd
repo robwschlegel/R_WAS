@@ -10,6 +10,7 @@ This report shows analyses performed and figures created from 10+ years of petro
 
 ```{r, message=FALSE}
 # Load libraries
+install.packages(tidyverse)
 library(tidyverse)
 library(lubridate)
 library(broom)
