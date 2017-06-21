@@ -1,0 +1,51 @@
+# Bookdown and resources
+
+Bookdown getting started:
+https://bookdown.org/
+
+Happy Git book:
+http://happygitwithr.com/
+
+R Basics
+https://ismayc.github.io/rbasics-book/
+
+R for Data Science
+http://r4ds.had.co.nz/
+
+Advanced R
+http://adv-r.had.co.nz/
+
+Cookbook for R Graphs
+http://www.cookbook-r.com/Graphs/
+
+Modern Drive
+https://ismayc.github.io/moderndiver-book/
+
+Data Processing with dplyr & tidyr
+https://rpubs.com/bradleyboehmke/data_wrangling
+
+# Slides and tutorials
+
+## Tutorials
+### Importing and tidying
+http://www.rpubs.com/cismay/imp-tidy
+
+## Courses
+https://www.datacamp.com/courses/3085
+
+## Data Import
+
+https://www.datacamp.com/community/tutorials/r-data-import-tutorial#gs.dRJIkXY
+https://www.datacamp.com/community/tutorials/importing-data-r-part-two#gs.3pvZRLM
+
+Cheatsheets
+https://www.rstudio.com/resources/cheatsheets/
+https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf
+
+# People
+
+Hadley Wickham - http://hadley.nz/
+@hadleywickham
+
+Chester Ismay - http://ismayc.github.io/
+@old_man_chester
