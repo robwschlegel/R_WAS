@@ -6,41 +6,55 @@ output:
   ioslides_presentation:
     css: styles.css
     #incremental: true
-    #widescreen: true
+    widescreen: true
     logo: logo.png
-    fig_width: 7
-    fig_height: 6
     fig_caption: true
 ---
+## WAS R Git
+
+<div align="center">
+<img src="code_quality.png" width=750 height=340>
+</div>
 
 ## Who are we?
 
-### Robert Schlegel 
+### **Robert Schlegel** 
 My name is rob and I love fish and kelp
 
-### Morgan Brand
+### **Morgan Brand**
 * PhD student at the University of Cape Town
-* Interests = aquaculture, microbiolgy, reproducibility and collaboration
+* @Morgs_John
+* morganjbrand@gmail.com
 
-## Todays "Order of Permanance"
+
+## What was there?
 
 ### The relevant not so distant past
-1) R
-2) Latex - Sweave
-3) Git
 
-*Continued...*
+<div class="columns-2">
+<img src="git_latex_r_logos.png" width=480 height=300>
 
-## Todays "Order of Permanance"
-### The present and future
-4) Rstudio
-5) R Markdown
+* R
+* Latex 
+* Git
+
+## What is there?
+
+### The present and the future
+<div class="columns-2">
+<img src="rstudio_github_rmarkdown_logos.png" width=480 height=300>
+
+* Rstudio
+* R Markdown
     + Bookdown
     + Thesisdown
     + Blogdown
-6) GitHub
+* GitHub
 
-## Some roles of a 'modern' scientist are?
+## Our roles as 'modern' scientists are?
+<div class="columns-2">
+<img src="collaboration.jpg" width=400 height=500>
+
 * Communication
     + Twitter
     + Popular articles
@@ -50,12 +64,15 @@ My name is rob and I love fish and kelp
     + Beyond your lab
 
 
+</div>
+
 <div class="notes">
 We can add more points to this during the session which we push to Git as part of the Demo
 </div>
 
 
-## The tradional approach to the scientific method
+## A tradional approach to the scientific method
+
 1) Devise a fancy question and call it a hypothesis
 
 2) Formulate a means of collecting the relevant data
@@ -72,7 +89,9 @@ We can add more points to this during the session which we push to Git as part o
 
       **REPEAT** steps 2 - 7 after receiving comments indefinately..
 
+
 ## Disadvantages ot this process
+
 * The process of data capture is not open
 
 * Lots of manual work (prone to make errors)
@@ -84,9 +103,9 @@ We can add more points to this during the session which we push to Git as part o
 * What if you made an error at the beginning of your analysis? If your data had an error? If your hypothesis was biased?
 
 ## Why R?
-* R is a completely free software package and language for statistical analysis and graphics.
+* R is a free software package for statistical analysis and graphics.
 
-* It excels in helping you with
+* It excels in helping you with:
     + data manipulation
     + automation
     + reproducibility
@@ -126,31 +145,41 @@ We can add more points to this during the session which we push to Git as part o
 </div>
 
 ## Bookdown with R Markdown
-Bookdown is one of the more recent additions to the R ecosystem/ universe which allows you to:
 
-* Write a book in one source format, and generate the output to multiple formats
-
-* Focus on writing the content without worrying too much about typesetting
-
-* Readers interact with examples in our book as they read it
-
-* We get feedback and even contributions from readers as we develop the book
-
-* You can also enjoy the benefits of version control, such as collaborating on GitHub
-
-## Bookdown with R Markdown
 <div align="center">
 <img src="yihui_bookdown_cover.jpg" width=400 height=500>
 </div>
 
+## Bookdown with R Markdown
+
+`Bookdown` is one of the more recent additions to the R-universe. 
+
+Some highlights are:
+
+* Multiple output formats
+
+* Focus on writing the content not typesetting
+
+* Readers can interact with examples
+
+* Feedback and contributions as the book is developed
+
+* Integrates with version control
+
 ## Thesisdown with R Markdown
-Thesisdown is built from bookdown and is an updated version of the Senior Thesis template `reedtemplates`
+`Thesisdown` is built from bookdown
+
 The current output for the four versions is here:
 
 * PDF
 * Word
 * ePub
 * HTML and Gitbook
+
+## Thesisdown with R Markdown - PDF
+<div align="center">
+<img src="reed_thesis_demo.png" width=750 height=450>
+</div>
 
 ## Thesisdown with R Markdown - Files
 <div align="center">
@@ -162,17 +191,11 @@ The current output for the four versions is here:
 <img src="reed_yaml.png" width=600 height=450>
 </div>
 
-## Thesisdown with R Markdown - PDF
-<div align="center">
-<img src="reed_thesis_demo.png" width=750 height=450>
-</div>
-
 ## Blogdown with R Markdown
-You can increase your online voice using tools developed in your research methods and present them as a blog!
 
-What are the benefits of using R Markdown over platforms, such as WordPress?
+You can now increase your online voice using tools developed in your research methods and present them as a blog!
 
-* The R package `blogdown` allows you to create websites using R Markdown and Hugo. 
+* The R package `blogdown` allows you to create websites using R Markdown 
 
 The website is generated from R Markdown documents
 
@@ -182,6 +205,18 @@ The website is generated from R Markdown documents
 
 can be computed and rendered dynamically from R code to your website!
 
+## Blogdown
+
+<div align="center">
+<img src="yihui_blogpage.png" width=650 height=500>
+</div>
+
+## Blogdown
+
+<div align="center">
+<img src="amber_blogpage.png" width=650 height=500>
+</div>
+
 ## What about Git?
 <div align="center">
 <img src="r_code_fail.jpg" width=500 height=500>
@@ -189,60 +224,32 @@ can be computed and rendered dynamically from R code to your website!
 
 ## What is Git and Github
 
-**Git** is a version control system that lets you track changes to files over time. 
+**Git** is a version control system that lets you track changes to files over time
 
-**Github** is a website for storing your git versioned files remotely.
+* Git manages the evolution of a set of files – called a repository
+
+**Github** is a website for storing your git versioned files remotely
+
+* Github provides a home for your Git-based projects on the internet
 
 * If you are a student you can get the micro account which includes 5 private repositories for free!
 
+
 ## Github
 
-Github was developed for social coding (i.e., sort of like an open source Wikipedia for programmers) [SOURCE](http://jules32.github.io/2016-07-12-Oxford/git/)
-
 <div align="center">
-<img src="github_flow.png" width=600 height=400>
+<img src="github_flow.png" width=600 height=500>
 </div>
 
-
-
-## WHY R?
-
-
-
-## WHAT IS R?
-* R is a completely free software package and language for statistical analysis and graphics.
-
-* It excels in helping you with
-    + data manipulation
-    + automation
-    + reproducibility
-    + improved accuracy
-    + error finding
-    + customizability
-    + beautiful visualizations
-    + Any downsides?
-
-## WHAT IS MARKDOWN?
-* A “plaintext formatting syntax”
-* Type in plain text, render to more complex formats
-* One step beyond writing a txt file
-* Render to HTML, PDF, DOCX, etc.
-
-## WHAT DOES IT LOOK LIKE
-
-
-## WHAT IS R MARKDOWN?
-
-
-## REPRODUCIBLE RESEARCH {#nextsteps .emphasized}
+## Reproducible Research {#nextsteps .emphasized}
 “Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do.”
 
 **Donald Knuth, *Literate Programming* (1984)**
 
+## Reproducible Research {#nextsteps .emphasized}
 “Reproducible research is the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them.”
 
 **Roger Peng, Johns Hopkins**
-
 
 
 
