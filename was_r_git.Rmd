@@ -5,27 +5,13 @@ date: June 27, 2017
 output:
   ioslides_presentation:
     css: styles.css
-    incremental: true
+    #incremental: true
     #widescreen: true
     logo: logo.png
+    fig_width: 7
+    fig_height: 6
+    fig_caption: true
 ---
-
-## SCHEDULE FOR SESSION
-* Why R?
-
-* Scope of R
-    + Data visualization
-    + Data manipulation/summarizing
-    + Data analysis/modeling
-    + Interpretation of results
-
-* What is R Markdown?
-    + Reproducible research
-    + Dynamic documents
-
-* What is Github
-    + Version control
-
 
 ## Who are we?
 
@@ -33,19 +19,53 @@ output:
 My name is rob and I love fish and kelp
 
 ### Morgan Brand
-> * I am a PhD student at the University of Cape Town
-> * My interests are, aquaculture, microbiolgy, reproducibility and collaboration
+* I am a PhD student at the University of Cape Town
+* My interests are, aquaculture, microbiolgy, reproducibility and collaboration
 
-## WHY R?
+## Todays "Order of Permanance"
 
-## THE TRADITIONAL APPROACH TO REPORTS / ANALYSIS IN THE SCIENCES
-* Import data set into statistical software package
-* Run the procedure to get results
-* Copy and paste appropriate pieces from the analysis into document editor
-* Add descriptions
-* Finish/submit report
+### The relevant past
+1) R
+2) Latex - Sweave
+3) Git
 
-## DISADVANTAGES OF THIS PROCESS
+*Continued...*
+
+## Todays "Order of Permanance"
+### The present and future
+4) Rstudio
+5) GitHub
+6) RMarkdown
+    + Bookdown
+    + Thesisdown
+    + Blogdown
+
+## Today {.flexbox .hcenter}
+
+## Roles of a 'modern' scientist today are?
+* Communication
+* Collaboration
+* Interdiciplinary work
+
+<div class="notes">
+We can add more points to this during the session which we push to Git as part of the Demo
+</div>
+
+
+## The tradional approach to reports / analysis in the science
+1) Import data set into statistical software package
+
+2) Run the procedure to get results
+
+3) Copy and paste appropriate pieces from the analysis into document editor
+
+4) Add descriptions
+
+5) Finish/submit report for comments
+
+6) **REPEAT** steps 2 - 4 after receiving comments indefinately..
+
+## Disadvantages ot this process
 * Lots of manual work (prone to make errors)
 
 * Tedious (who likes to carefully copy-and-paste?)
@@ -53,6 +73,27 @@ My name is rob and I love fish and kelp
 * Likely not recordable (did you write down all the steps you followed to get your analysis?)
 
 * What if you made an error at the beginning of your analysis? If your data had an error?
+
+
+## Scope of R
+    + Data visualization
+    + Data manipulation/summarizing
+    + Data analysis/modeling
+    + Interpretation of results
+
+### What is Markdown?
+
+### What is R Markdown?
+
+### What is Github
+    + Version control
+
+
+
+
+## WHY R?
+
+
 
 ## WHAT IS R?
 * R is a completely free software package and language for statistical analysis and graphics.
@@ -74,7 +115,27 @@ My name is rob and I love fish and kelp
 * Render to HTML, PDF, DOCX, etc.
 
 ## WHAT DOES IT LOOK LIKE
-![optional caption text](markdown_visual.png)
+![](markdown_visual.png)
+
+## WHAT IS R MARKDOWN?
+* “Literate programming”
+* Embed R code in a Markdown document
+* Renders textual output along with graphics
+
+## REPRODUCIBLE RESEARCH {#nextsteps .emphasized}
+“Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do.”
+
+**Donald Knuth, *Literate Programming* (1984)**
+
+“Reproducible research is the idea that data analyses, and more generally, scientific claims, are published with their data and software code so that others may verify the findings and build upon them.”
+
+**Roger Peng, Johns Hopkins**
+
+## WORKING WITH RRStudio is a powerful user interface that helps you get better control of your analysis.
+* Like R, it is also completely free.
+* You can write your entire paper/report (text, code, analysis, graphics, etc.) all in R Markdown.
+* If you need to update any of your code, R Markdown will automatically update your plots and output of your analysis and will create an updated PDF file.
+* No more copy-and-paste!
 
 
 
