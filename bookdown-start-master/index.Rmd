@@ -8,7 +8,7 @@ bibliography:
   - bib/packages.bib
 biblio-style: apalike
 link-citations: yes
-github-repo: schrob040/R_WAS
+github-repo: schrob040/R_WAS/bookdown-start-master
 cover-image: "images/logo_bw.png"
 description: "This book is built as an infomration package meant for the student workshop at #WorldAqua17"
 ---

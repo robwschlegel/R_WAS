@@ -1,15 +1,16 @@
 --- 
-title: "A Minimal Bookdown Book"
-author: "Sean Kross"
-date: "2016-12-09"
+title: "WASdown"
+author: "Morgan Brand and Robert Schlegel"
+date: "2017-06-22"
 site: bookdown::bookdown_site
 documentclass: book
-bibliography: [book.bib]
+bibliography: 
+  - bib/packages.bib
 biblio-style: apalike
 link-citations: yes
-github-repo: seankross/bookdown-start
-url: 'http\://seankross.com/bookdown-start/'
-description: "Everything you need (and nothing more) to start a bookdown book."
+github-repo: schrob040/R_WAS/bookdown-start-master
+cover-image: "images/logo_bw.png"
+description: "This book is built as an infomration package meant for the student workshop at #WorldAqua17"
 ---
 
 # Preface {-}
