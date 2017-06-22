@@ -1,0 +1,45 @@
+# Bananas
+
+The farm has a combination of sugar cane and bananas. Some of the banana fields have been replanted to cane in the past few years. The fields currently in production are 1011, 101, and a newly combined 96 (old 93 + 96). Data from 2008 has been captured and will be presented in the following section.
+
+```{r load, message=FALSE}
+# Load the relevant packages
+library(tidyverse)
+library(lubridate)
+
+# Read in the data using `readr` from the `tidyverse` package
+production <- read_csv("data/Banana Production.csv")
+
+# A quick look to make sure the data looks like we expect
+head(production)
+tail(production)
+
+# Correct date
+production$Date <- as.Date(production$Date, "%m/%d/%y")
+
+# Add month and year columns
+production$month <- floor_date(production$Date, "month")
+production$year <- floor_date(production$Date, "year")
+
+```
+
+The fields were recorded as numbers but I would rather have the prefixed by 'f' so that I do not confuse them with production.
+
+```{r}
+# I have used the pipe function from the package dply alongside the stringr package to do this
+dat<-production %>%
+  mutate(Field = stringr::str_replace(Field, "93", "f93"),
+         Field = stringr::str_replace(Field, "96", "f96"),
+         Field = stringr::str_replace(Field, "101", "f101"),
+         Field = stringr::str_replace(Field, "1011", "f1011"),
+         Field = stringr::str_replace(Field, "102", "f102"))
+```
+
+Because in 2015 some banana fields were taken out and then two smaller parts were combined the nameing structure differs. To fix this I have written a few lines that account for the change
+
+
+
+
+
+
+

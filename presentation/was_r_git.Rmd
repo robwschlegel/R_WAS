@@ -10,7 +10,7 @@ output:
     #logo: figure/logo_bw.png
     fig_caption: true
 ---
-## The use of R Rstudio and Github
+## The use of R Rstudio and Github | An introduction to reproducible workflows in R
 
 <div class="columns-2">
 <img src="figure/logo_bw.png" width=480 height=300>
