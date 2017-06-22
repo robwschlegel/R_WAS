@@ -1,6 +1,11 @@
 # Bananas
 
-The farm has a combination of sugar cane and bananas. Some of the banana fields have been replanted to cane in the past few years. The fields currently in production are 1011, 101, and a newly combined 96 (old 93 + 96). Data from 2008 has been captured and will be presented in the following section.
+The farm has a combination of sugar cane and bananas. Data from 2008 on banana produciton has been captured and will be presented in the following section.
+
+
+## Loading the data
+
+This data were entered into excel and saved as a `.csv` file. Data are easiest to work with when it is in long format, ie. each row represents a single observation. This is not crucial because it can be trasformed using R.
 
 ```{r load, message=FALSE}
 # Load the relevant packages
@@ -23,6 +28,8 @@ production$year <- floor_date(production$Date, "year")
 
 ```
 
+## Working with the data 
+
 The fields were recorded as numbers but I would rather have the prefixed by 'f' so that I do not confuse them with production.
 
 ```{r}
@@ -35,8 +42,214 @@ dat<-production %>%
          Field = stringr::str_replace(Field, "102", "f102"))
 ```
 
-Because in 2015 some banana fields were taken out and then two smaller parts were combined the nameing structure differs. To fix this I have written a few lines that account for the change
+## Plotting the data
 
+### Bunches per month
+
+If we were to try an plot this data for number of bunches harvested per month we can start to see that there is some kind of syclic trend (Figure \@ref(fig:plota)). The blue line is a smooth but it seems to be not be picking up the cumulative numbers.
+
+
+```{r plota, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the number of banana bunches harvested per month."}
+names(dat)
+ggplot(data = dat, aes(x = month, y = Bunches)) +
+  geom_bar(stat = "identity") +
+  geom_smooth(method = "loess", span = 0.2) +
+  scale_x_date(date_breaks = "3 month", date_labels = "%b %y") +
+  theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time")
+```
+
+If we want to create a summary data set to only include the sum total of banana bunches per month we can simply use `dplyr` and the pipe function. This creates a sum total for bunches.month^-1^ and the blue line now fits the plot more appropriately (Figure \@ref(fig:plotb))
+
+```{r}
+names(dat)
+# Using dply to group the data by month and year, create a new column for the sum of bunches picked per month, then ungroup
+dat.sum_m <- 
+  dat %>%
+  group_by(month, year) %>%
+  summarise(bunches.m = sum(Bunches)) %>%
+  ungroup()
+
+```
+
+```{r plotb, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the sum of banana bunches harvested per month with a smooth fitted in blue."}
+ggplot(data = dat.sum_m, aes(x = month, y = bunches.m)) +
+  geom_bar(stat = "identity") +
+  geom_smooth(method = "loess", span = 0.2) +
+  scale_x_date(date_breaks = "3 month", date_labels = "%b %y") +
+  theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time")
+```
+
+From the trend observed in Figure \@ref(fig:plotb) it seems apparent that there may be differences in the monthly output which we could look at. 
+
+```{r}
+# I am going to modify an existing dataframe so I will assign it to 'a' as to not back track
+ a <- dat.sum_m
+
+# The month and year are going to be pulled out of the date and given their own coloumn
+a$y<-year(a$year)
+a$m<-month(a$month)
+
+# If I want to use the month as anything other than a date I should tell R it is a factor
+a1 <-
+  a %>%
+  mutate(m = as.factor(m))
+
+```
+
+Now that the data are ready to be looked at as bunches per month a simple boxplot can tell a quick visual story 
+
+```{r boplot, fig.cap="Boxplot showing the total banana bunches harvested per month."}
+# a quick boxplot for the bunches harvested per month
+ggplot(data = a1, aes(x = m, y = bunches.m)) +
+  geom_boxplot() +
+  geom_jitter() +
+  labs(y = "Banana bunches", x = "Month")
+
+```
+
+#### Statistics
+
+Are the number of banches harvest per month statistically different?
+
+To answer this we will run a quick one-way ANOVA
+
+```{r}
+library(broom)
+aov <- aov(bunches.m ~ m, data = a1)
+tidy(aov)
+tidy(TukeyHSD(aov))
+```
+
+
+### Bunches per field
+
+```{r}
+# Creating a cum for each month grouped by field
+names(dat)
+dat.sum_m.f <- 
+  dat %>%
+  group_by(month, year, Field) %>%
+  summarise(bunches.m.f = sum(Bunches))
+```
+
+As described arelier there are different fields which are picked from. A look at the production of bunches by field in Figure \@ref(fig:plotf) highlights the fact the two fields (f102 and f93) were taken out of production.
+
+```{r plotf, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the sum of banana bunches harvested per month per field with a smooth fitted in blue."}
+
+ggplot(data = dat.sum_m.f, aes(x = month, y = bunches.m.f)) +
+  geom_bar(stat = "identity") +
+  geom_smooth(method = "loess", span = 0.2) +
+  scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time") +
+  facet_wrap(~Field, ncol = 2)
+```
+
+### Cumulative bunches
+
+It seems interesting to look at a field as a continuous unit and measure the cumulative harvest over time. 
+
+```{r}
+# Creating a cumulative bunches harvest for each field
+names(dat)
+dat.sum_f <- 
+  dat %>%
+  group_by(Field) %>%
+  mutate(cumsum = cumsum(Bunches))
+```
+
+In Figure \@ref(fig:plot-line) the cumulative number of bunches harvested for each field highlights that they are not all performing the same. We could quickly add a linear model to this to further visualize the trend.
+
+```{r plot-line, message=FALSE, warning=FALSE, fig.cap="Line graph showing the cumulative harvest for banana bunches per field."}
+
+ggplot(data = dat.sum_f, aes(x = Date, y = cumsum, colour = Field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time") 
+  #facet_wrap(~Field, ncol = 2)
+
+```
+
+### Data normalization
+
+Fields are arbitrary units which are marked out and cultivated. They are divided into smaller manageble units which are in close proximity to eachother. For this reason it is neccessary to normalize the production by field size so that the values can be compared.
+
+We know theat the field sizes are: 
+
+* 93 - 1.51 ha
+* 96 - 1.31 ha
+* 101 - 2.07 ha
+* 102 - 1.12 ha
+* 1011 - 2.21 ha
+
+```{r}
+# Its nice to have the coloumn names handy
+names(dat.sum_f)
+
+# here we will have to spread the data to wide format, create new coloumns for production/ha, gather the data back to long format and drop the nas
+norm.dat.w <- dat.sum_f %>%
+  spread(key = Field, value = cumsum) %>%
+  group_by(month) %>%
+  mutate(ha.93 = f93 /1.51,
+         ha.96 = f96 /1.31,
+         ha.101 = f101/2.07,
+         ha.1011 = ff1011/2.21,
+         ha.102 = f102/1.12) 
+
+norm.dat.l <-
+  norm.dat.w %>%
+  select(month, ha.93, ha.96, ha.101, ha.1011, ha.102) %>%
+  gather(field, tonnage, 2:6)%>%
+  drop_na()
+  
+glimpse(norm.dat.l)
+```
+
+```{r plotnormalize,}
+names(norm.dat.l)
+ggplot(data = norm.dat.l, aes(x = month, y = tonnage, colour = field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
+  #geom_smooth(method = "loess", span = 0.1) +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time") 
+  #facet_wrap(~field, ncol = 2)
+```
+
+The awsome thing about this is that you can very easily turn a plot into something more than just a plot using `plotly`
+
+```{r plotly}
+#devtools::install_github("ropensci/plotly")
+#devtools::install_github("hadley/ggplot2")
+library(plotly)
+
+plotly <- ggplot(data = norm.dat.l, aes(x = month, y = tonnage, colour = field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  geom_smooth(method = "lm") +
+  #geom_smooth(method = "loess", span = 0.1) +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Banana bunches", x = "Time") 
+  #facet_wrap(~field, ncol = 2)
+
+ggplotly(plotly)
+```
+
+
+
+```{r}
+library(nlme)
+mountain.lm <- lm(tonnage ~ field, data = norm.dat.l)
+tidy(mountain.lm)
+```
 
 
 
