@@ -1,0 +1,148 @@
+---
+title: "Rainfall"
+author: "Morgan Brand"
+date: "28 August 2016"
+output: bookdown::gitbook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r pkgs}
+needs(tibble)
+needs(readr)
+needs(tidyr)
+needs(dplyr)
+needs(ggplot2)
+needs(magrittr)
+needs(forcats)
+needs(knitr)
+needs(sm)
+needs(sjPlot)
+needs(HH)
+needs(broom)
+needs(plotly)
+needs(gridExtra)
+needs(nlme)
+needs(lubridate)
+needs(zoo)
+needs(moments)
+```
+
+
+
+```{r}
+#Rainfall_1908.2014
+rain <- read_csv("Rainfall_1908-2014.csv")
+glimpse(rain)
+dat.r<-rain %>%
+  select(1:13)
+
+```
+
+Gather the data to long format 
+
+```{r}
+rain.dat<- 
+  dat.r %>%
+  mutate(YEAR = as.factor(YEAR)) %>%
+  group_by(YEAR) %>%
+  gather(month, rain_mm, 2:13)
+```
+
+Creating a date value
+
+```{r}
+#month starting on 1 is whole month
+rain.dat$Date <- ymd( paste(rain.dat$YEAR, rain.dat$month, "1", sep="-") )
+rainfall<-
+  rain.dat %>%
+  arrange(Date) %>%
+  group_by(YEAR) %>%
+  mutate(total.y = sum(rain_mm)) %>%
+  select(YEAR, month, rain_mm, Date, total.y)
+
+save(rainfall, file = "rainfall.Rdata")
+
+s<-rainfall %>%
+  filter(Date >= "2008-12-01", Date<="2016-12-01") %>%
+  filter(month == "Dec") 
+
+%>%
+  rr<-ggplot(s, aes(y=total.y, x=YEAR, group=1)) +
+  geom_line() +
+  scale_y_continuous(limits=c(0,2500), breaks=seq(0,2500, by = 250)) +
+  theme_bw() +
+  labs(x = "Year",
+       y = "Total annual rainfall (mm)")
+ggsave("rain_2007_2016.pdf", rr,
+       width = 6,
+       height = 3.76)
+
+All <- grid.arrange(arrangeGrob(n + theme(legend.position="right"), 
+                         rr + theme(legend.position="none"),
+                         ncol = 1, 
+                         heights=c(3, 1)))
+
+ggsave("rain_production.pdf", All, 
+       width = 8,
+       height = 10)
+                    
+  geom_bar(stat = "Identity") 
+  
+  geom_smooth(span = 0.8) 
+  
+ggplot(rainfall, aes(y=total.y, x=YEAR, fill = month)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Year",
+       y = "Total annual rainfall (mm)")
+  
+```
+
+Summary by year
+
+```{r}
+rainfall %>% group_by(YEAR) %>% 
+  summarise(mrain=mean(rain_mm))  -> rain_summary
+head(rain_summary)
+```
+
+Summary by month
+
+```{r}
+rainfall %>% group_by(month) %>% 
+  summarise(mrain=mean(rain_mm)) -> rain_months
+head(rain_months)
+```
+
+Plot by month
+
+```{r}
+rainfall %>% group_by(YEAR,month) %>% summarise(rf=sum(rain_mm)) -> monthly_total
+plot(monthly_total$rf[1:120],type='b',ann=F, axes=F, cex=0.6)
+axis(1,at=seq(0,120,by=12),labels=1908:2016); axis(2); title('')
+```
+
+```{r}
+rainfall %>% group_by(YEAR,month) %>% summarise(rf=sum(rain_mm)) -> monthly_total
+monthly_total$rf %>% ts(freq=12,start=1909) -> rain_ts
+rain_ts %>% window(c(1909,1),c(2015,12)) %>%
+  monthplot(col='dodgerblue',col.base='indianred',lwd.base=3)
+```
+
+```{r}
+rain_ts  %>% 
+  stl(s.window='periodic') -> rain_decomp
+(rain_decomp)
+```
+
+```{r}
+ set.seed(24)
+ df <- data.frame(month=rep(rep(1:12,each=4),3), year=rep(1926:1928, each=12*4))
+ 
+ head(!df$month %in% c(1,2,12), 15)
+
+
+```
+

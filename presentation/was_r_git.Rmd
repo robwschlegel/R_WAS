@@ -7,13 +7,13 @@ output:
     css: styles.css
     #incremental: true
     widescreen: true
-    #logo: figure/logo.png
+    #logo: figure/logo_bw.png
     fig_caption: true
 ---
 ## The use of R Rstudio and Github
 
 <div class="columns-2">
-<img src="figure/logo.png" width=480 height=300>
+<img src="figure/logo_bw.png" width=480 height=300>
 
 
 Morgan Brand @[Morgs_John](https://twitter.com/Morgs_John)

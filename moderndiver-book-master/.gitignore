@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*placeholder.html
+.httr-oauth
+*_bookdown_files
+ModernDive.Rproj
+*docs-devel/
+*docs_devel/
+.DS_Store
