@@ -1,0 +1,4 @@
+book_filename: "wasdown"
+chapter_name: "Chapter "
+rmd_files: ["index.Rmd", "01-intro.Rmd", "02-petrol.Rmd", "03-bananas.Rmd", "04-summary.Rmd", "05-references.Rmd"]
+download: [["wasdown.pdf", "PDF"], ["wasdown.epub", "EPUB"], ["wasdown.docx", "Word"]]

@@ -1,0 +1,18 @@
+--- 
+title: "WASdown"
+author: "Morgan Brand and Robert Schlegel"
+date: "2017-06-22"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: 
+  - bib/packages.bib
+biblio-style: apalike
+link-citations: yes
+github-repo: schrob040/R_WAS/bookdown-start-master
+cover-image: "images/logo_bw.png"
+description: "This book is built as an infomration package meant for the student workshop at #WorldAqua17"
+---
+
+# Preface {-}
+
+This book was written using the **bookdown** R package from Yihui Xie [@R-bookdown]. It is a combination of work done by Hadley ([\@hadleywickham](https://twitter.com/hadleywickham)), Garrett ([\@statgarrett](https://twitter.com/statgarrett)) and Chester ([\@Old_Man_Chester](https://twitter.com/old_man_chester)) with some insight from the authors. This a complementory book for a workshop held at the [World Aquaculture Conference](https://www.was.org/meetings/default.aspx?code=WA2017) in Cape Town June 2017. We (the authors) hope to provide exposure to the world of R and some relevant online resources to students which will hopefully put them on track for being self tought coding aqucultureists. An introduction to using R, RStudio, and R Markdown by Chester Ismay is also available in a free book [here](http://ismayc.github.io/rbasics-book) and more in his DataCamp course at [Effective Data Storytelling using the tidyverse](https://www.datacamp.com/courses/3085). For more insight into the useage we would advice you to look through [R for Data Science](http://r4ds.had.co.nz/index.html) and [ModernDive](https://ismayc.github.io/moderndiver-book/). For an example of the role within the science workflow read the **Nature** publication [Our path to better science in less time using open data science tools](https://www.nature.com/articles/s41559-017-0160) and the extensive testing they have done.
