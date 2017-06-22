@@ -133,19 +133,16 @@ We can add more points to this during the session which we push to Git as part o
 We can add more points to this during the session which we push to Git as part of the Demo
 </div>
 
-## R console vs RStudio
+## R, R console and RStudio
 
-[R](https://www.r-project.org/) console is an older version that favours the command line programmer
+* R (programming language) is a programming language and environment, "made by statistician and for statistician"
 
-[RStudio](https://www.rstudio.com/) is a powerful user interface that helps you get better control of your analysis.
+* [R](https://www.r-project.org/) console is an older version that favours the command line programmer
 
-* Like R, it is also completely free.
+* [RStudio](https://www.rstudio.com/) is an Integrated Development Environment (IDE) that helps you develop programs in R
 
-* You can write your entire paper/report (text, code, analysis, graphics, etc.) all in a language called [R Markdown](http://rmarkdown.rstudio.com/).
+You can use R without using RStudio, but you can't use RStudio without using R
 
-* If you need to update any of your code, R Markdown will automatically update your plots and output of your analysis and will create an updated PDF file.
-
-* No more copy-and-paste!
 
 ## Tidyverse in R
 
@@ -182,6 +179,8 @@ It also installs a selection of other tidyverse packages
 * Embed R code in a Markdown document
 
 * Renders textual output along with graphics
+
+* You can write your entire paper/report (text, code, analysis, graphics, etc.) all in [R Markdown](http://rmarkdown.rstudio.com/).
 
 ## R Markdown?
 <div align="center">
