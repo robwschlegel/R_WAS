@@ -16,12 +16,12 @@ output:
 <img src="figure/logo_bw.png" width=480 height=300>
 
 
-Morgan Brand @[Morgs_John](https://twitter.com/Morgs_John)
+Morgan Brand [\@Morgs_John](https://twitter.com/Morgs_John)
     + PhD student [UCT](http://www.uct.ac.za/)
 
 `#WorldAqua17`
 
-Robert Schlegel @[wiederweiter](https://twitter.com/wiederweiter)
+Robert Schlegel [\@wiederweiter](https://twitter.com/wiederweiter)
     + PhD student [UWC](https://www.uwc.ac.za/Pages/default.aspx)
 
 
@@ -310,7 +310,7 @@ sessionInfo()
 
 ## Thanks and references
 
-I would like to Thank @[Old_Man_Chester](http://ismayc.github.io/) and his [RPubs](http://www.rpubs.com/cismay) slides
+I would like to Thank [\@Old_Man_Chester](http://ismayc.github.io/) and his [RPubs](http://www.rpubs.com/cismay) slides
 
 <style>
 slides > slide { overflow: scroll; }

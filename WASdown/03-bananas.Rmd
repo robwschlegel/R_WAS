@@ -118,6 +118,10 @@ To answer this we will run a quick one-way ANOVA
 ```{r}
 library(broom)
 aov <- aov(bunches.m ~ m, data = a1)
+summary(aov)
+TukeyHSD(aov)
+
+# The tidyed
 tidy(aov)
 tidy(TukeyHSD(aov))
 ```

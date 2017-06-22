@@ -1,6 +1,6 @@
 # Introduction {#intro}
 
-Before you will be in any shape to get **R**rring you will need to download the basics. There are lots of resources that can guide you through this process and it is not our intention to create duplicates. You can spend your time looking for answers online and there will surley be several versions of the same thing however, you would be wise to follow the likes of [\@hadleywickham](https://twitter.com/hadleywickham) in this process. Below there is an excerpt from his book co-authored with [\@statgarrett](https://twitter.com/statgarrett);
+Before you will be in any shape to get **R**rring you will need to download the basics. There are lots of resources that can guide you through this process and it is not our intention to create duplicates. You can spend your time looking for answers online and there will surley be several versions of the same thing however, you would be wise to follow the likes of [\@hadleywickham](https://twitter.com/hadleywickham) in this process. Below there is an excerpt from his book co-authored with [\@statgarrett](https://twitter.com/statgarrett)
 
 ## Excerpt from [R for Data Science](http://r4ds.had.co.nz/index.html)
 
@@ -72,10 +72,57 @@ Both cheatsheets are also available at <http://rstudio.com/cheatsheets>.
 
 ## Thesisdown
 
+[Thesisdown](https://github.com/ismayc/thesisdown) is built from [Bookdown](https://bookdown.org/home/). It is a very useful tool to start working from if your goal is to submit your thesis using the language R Markdown. It allows you to jump into a working template and coustomize the content. The [Thesisdown](https://github.com/ismayc/thesisdown) package was created by [\@Old_Man_Chester](https://twitter.com/old_man_chester) and the introduction to the package which can be found [here]() is copied below
+
+----
+
+This project was inspired by the [bookdown](http://github.com/rstudio/bookdown) package and is an updated version of my Senior Thesis template in the `reedtemplates` package [here](http://github.com/ismayc/reedtemplates).
+
+Currently, the PDF and gitbook versions are fully-functional.  The word and epub versions are developmental, have no templates behind them, and are essentially calls to the appropriate functions in bookdown.
+
+The current output for the four versions is here:
+
+- [PDF](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.pdf) (Generating LaTeX file is available [here](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.tex) with other files at in the [book directory](https://github.com/ismayc/thesisdown_book/tree/gh-pages).)
+- [Word](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.docx)
+- [ePub](https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.epub)
+- [gitbook](http://ismayc.github.io/thesisdown_book)
+
+Under the hood, the Reed College LaTeX template (and soon the Reed College Word template) is used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight [markdown](http://rmarkdown.rstudio.com/authoring_basics.html) syntax, and **R** code and its output can be seamlessly included using [rmarkdown](http://rmarkdown.rstudio.com).
+
+Using **thesisdown** has some prerequisites which are described below. To compile PDF documents using **R**, you are going to need to have LaTeX installed.  It can be downloaded for Windows at <http://http://miktex.org/download> and for Mac at <http://tug.org/mactex/mactex-download.html>.  Follow the instructions to install the necessary packages after downloading the (somewhat large) installer files.  You may need to install a few extra LaTeX packages on your first attempt to knit as well.
+
+### The basic filing structure
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("images/reed_files.png")
+```
+
+### PDF output
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("images/reed_thesis_demo.png")
+```
+
+### YAML
+
+```{r echo = FALSE, out.width = "75%"}
+knitr::include_graphics("images/reed_yaml.png")
+```
+
 
 ## Blogdown
 
+The beauty of a platform like [Blogdown](https://github.com/rstudio/blogdown) is in its ability to transport your scientific work into the public domain with very little extra effort. A website is generated from R Markdown documents. You can include all your results, analysis, graphics andcan be computed and rendered dynamically from R code to your website!
 
+[\@xieyihui](https://twitter.com/xieyihui) and [\@Amber Thomas](https://proquestionasker.github.io/) have put together an open book using bookdown which details the process of setting up a blogdown for your own prive use. A section of their book, [Creating Websites with R Markdown](https://bookdown.org/yihui/blogdown/) is included below and the online version is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).  
+
+We introduce an R package, **blogdown**, in this short book, to teach you how to create websites using R Markdown and Hugo. If you have experience with creating websites, you may naturally ask what the benefits of using R Markdown are, and how **blogdown** is different with existing popular website platforms, such as WordPress. There are two major highlights of **blogdown**:
+
+1. It produces a static website, meaning the website only consists of static files such as HTML, CSS, JavaScript, and images, etc. You can host the website on any web servers (see Chapter \@ref(deployment) for details). The website does not require server-side scripts such as PHP or databases like WordPress does. It is just one folder of static files. We will explain more benefits of static websites in Chapter \@ref(hugo), when we introduce the static website generator Hugo.
+
+1. The website is generated from R Markdown documents (R is optional, i.e., you can use plain Markdown documents without R code chunks). This brings a huge amount of benefits, especially if your website is related to data analysis or (R) programming. Being able to use Markdown implies simplicity and more importantly, _portability_ (e.g., you are giving yourself the chance to convert your blog posts to PDF and publish to journals or even books in the future). R Markdown gives you the benefits of dynamic documents --- all your results, such as tables, graphics, and inline values, can be computed and rendered dynamically from R code, hence the results you present on your website are more likely to be reproducible. An additional yet important benefit of using R Markdown is that you will be able to write technical documents easily, due to the fact that **blogdown** inherits the HTML output format from **bookdown** [@R-bookdown]. For example, it is possible to write LaTeX math equations, BibTeX citations, and even theorems and proofs if you want.
+
+Please do not be misled by the word "blog" in the package name: **blogdown** is for general-purpose websites, and not only for blogs. For example, both authors of this book have their personal websites, where you can find information about their projects, blogs, package documentations, and so on.^[Yihui's homepage is at https://yihui.name. He writes blog posts in both Chinese (https://yihui.name/cn/) and English (https://yihui.name/en/), and documents his software packages such as **knitr** (https://yihui.name/knitr/) and **animation** (https://yihui.name/animation/). Occasionally he also writes articles like https://yihui.name/rlp/ when he finds interesting topics but does not bother a formal journal submission. Amber's homepage is at https://proquestionasker.github.io. Similarly, you can find her blog and project pages.] All their pages are built from **blogdown** and Hugo.
 
 ## Git and Github
 
