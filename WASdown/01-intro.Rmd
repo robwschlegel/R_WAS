@@ -1,8 +1,10 @@
 # Introduction {#intro}
 
-Before you will be in any shape to get **R**rring you will need to download the basics. There are lots of resources that can guide you through this process and it is not our intention to create duplicates. You can spend your time looking for answers online and there will surley be several versions of the same thing however, you would be wise to follow the likes of [\@hadleywickham](https://twitter.com/hadleywickham) in this process. Below there is an excerpt from his book co-authored with [\@statgarrett](https://twitter.com/statgarrett)
+Before you will be in any shape to get **R**rring you will need to download the basics. There are lots of resources that can guide you through this process and surley several versions. 
 
-## Excerpt from [R for Data Science](http://r4ds.had.co.nz/index.html)
+Below there is an excerpt from the book by [\@statgarrett](https://twitter.com/statgarrett) and [\@hadleywickham](https://twitter.com/hadleywickham)  
+
+## [R for Data Science](http://r4ds.had.co.nz/index.html)
 
 Taken from [R for Data Science](http://r4ds.had.co.nz/index.html) and unchanged licenced under the [Creative Commons Attribution-NonCommercial-NoDerivs 3.0](http://creativecommons.org/licenses/by-nc-nd/3.0/us/) United States License. 
 
@@ -26,7 +28,7 @@ For now, all you need to know is that you type R code in the console pane, and p
 
 ### The tidyverse
 
-You'll also need to install some R packages. An R __package__ is a collection of functions, data, and documentation that extends the capabilities of base R. Using packages is key to the successful use of R. The majority of the packages that you will learn in this book are part of the so-called tidyverse. The packages in the tidyverse share a common philosophy of data and R programming, and are designed to work together naturally. 
+You'll also need to install some R packages. An R __package__ is a collection of functions, data, and documentation that extends the capabilities of base R. Using packages is key to the successful use of R. The packages in the tidyverse share a common philosophy of data and R programming, and are designed to work together naturally. 
 
 You can install the complete tidyverse with a single line of code:
 
@@ -70,9 +72,9 @@ R Markdown integrates a number of R packages and external tools. This means that
 
 Both cheatsheets are also available at <http://rstudio.com/cheatsheets>.
 
-## Thesisdown
+## [Thesisdown](https://github.com/ismayc/thesisdown)
 
-[Thesisdown](https://github.com/ismayc/thesisdown) is built from [Bookdown](https://bookdown.org/home/). It is a very useful tool to start working from if your goal is to submit your thesis using the language R Markdown. It allows you to jump into a working template and coustomize the content. The [Thesisdown](https://github.com/ismayc/thesisdown) package was created by [\@Old_Man_Chester](https://twitter.com/old_man_chester) and the introduction to the package which can be found [here]() is copied below
+[Thesisdown](https://github.com/ismayc/thesisdown) is built from [Bookdown](https://bookdown.org/home/). It is a very useful tool to start working from if your goal is to submit your thesis using the language R Markdown. The [Thesisdown](https://github.com/ismayc/thesisdown) package was writen by [\@Old_Man_Chester](https://twitter.com/old_man_chester) 
 
 ----
 
@@ -110,7 +112,7 @@ knitr::include_graphics("images/reed_yaml.png")
 ```
 
 
-## Blogdown
+## [Blogdown](https://github.com/rstudio/blogdown)
 
 The beauty of a platform like [Blogdown](https://github.com/rstudio/blogdown) is in its ability to transport your scientific work into the public domain with very little extra effort. A website is generated from R Markdown documents. You can include all your results, analysis, graphics andcan be computed and rendered dynamically from R code to your website!
 
