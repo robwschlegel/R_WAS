@@ -167,7 +167,7 @@ If you're an active Twitter user, follow the `#rstats` hashtag.
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'tidyverse', 'knitr', 'rmarkdown', 
-  'nycflights13', 'devtools', 'ggplot2', 'webshot', 
+  'nycflights13', 'devtools', 'ggplot2', 'webshot', 'lubridate', 
   'dygraphs', 'tufte', 'okcupiddata', 'mosaic',
    'dplyr', 'ggplot2movies', 'fivethirtyeight', 'tibble', 'readr'
 ), 'bib/packages.bib')
