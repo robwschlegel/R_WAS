@@ -1,6 +1,6 @@
 book_filename: "WASdown"
 rmd_files: ["index.Rmd", "01-intro.Rmd", "02-petrol.Rmd", "03-bananas.Rmd", "04-summary.Rmd", "05-references.Rmd"]
-repo: https://github.com/schrob040/R_WAS.git
+repo: 
 language:
   ui:
     chapter_name: "Chapter "

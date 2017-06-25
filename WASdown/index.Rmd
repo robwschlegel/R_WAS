@@ -9,7 +9,6 @@ bibliography:
   - bib/book.bib 
   - bib/packages.bib
 biblio-style: apalike
-github-repo: https://github.com/schrob040/R_WAS.git
 link-citations: yes
 cover-image: images/logo_bw.png
 description: "This book is built as an infomration package meant for the student workshop at #WorldAqua17"

@@ -36,25 +36,18 @@ production$year <- floor_date(production$Date, "year")
 
 ```
 
-### Working with the data in tidyverse
-
-The fields were recorded as numbers but I would rather have the prefixed by 'f' so that I do not confuse them with production.
+## Assign the data
 
 ```{r}
-# I have used the pipe function from the package dply alongside the stringr package to do this
-dat<-production %>%
-  mutate(Field = stringr::str_replace(Field, "93", "f93"),
-         Field = stringr::str_replace(Field, "96", "f96"),
-         Field = stringr::str_replace(Field, "101", "f101"),
-         Field = stringr::str_replace(Field, "1011", "f1011"),
-         Field = stringr::str_replace(Field, "102", "f102"))
+dat <- production
 ```
+
 
 ## Plotting bunches per month
 
 ### Bunches per month
 
-If we were to try an plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing. To have a look at what this problem might be I will inspect the data frame and trouble shoot
+If we were to try an plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing.
 
 ```{r plota, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the number of banana bunches harvested per month."}
 names(dat)
@@ -65,17 +58,6 @@ ggplot(data = dat, aes(x = month, y = Bunches)) +
   theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
   labs(y = "Banana bunches", x = "Time")
 ```
-
-#### Problematic smooth
-
-```{r}
-# The str function allows you to see both the variable type and the values.
-str(dat)
-
-# Open the dat data frame from the environment panel
-```
-
-After looking at both the `str` and the data frame the problem is that `Bunches` are not being summed by month. This is an easy fix
 
 
 ### Bunches per month
@@ -141,8 +123,6 @@ To answer this we will run a quick one-way ANOVA
 ```{r}
 library(broom)
 aov <- aov(bunches.m ~ m, data = a1)
-summary(aov)
-TukeyHSD(aov)
 
 # The tidyed
 tidy(aov)
@@ -170,11 +150,11 @@ ggplot(data = dat.sum_m.f, aes(x = month, y = bunches.m.f)) +
   geom_smooth(method = "loess", span = 0.2) +
   scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
-  labs(y = "Banana bunches", x = "Time") +
+  labs(y = "Banana bunches", x = "Year") +
   facet_wrap(~Field, ncol = 2)
 ```
 
-### Cumulative bunches
+### Cumulative bunches per field
 
 It seems interesting to look at a field as a continuous unit and measure the cumulative harvest over time. 
 
@@ -197,57 +177,37 @@ ggplot(data = dat.sum_f, aes(x = Date, y = cumsum, colour = Field)) +
   #geom_smooth(method = "lm") +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
-  labs(y = "Banana bunches", x = "Time") 
+  labs(y = "Banana bunches", x = "Year") 
   #facet_wrap(~Field, ncol = 2)
 
 ```
 
-### Data normalization
 
-Fields are arbitrary units which are marked out and cultivated. They are divided into smaller manageable units which are in close proximity to each other. For this reason it is necessary to normalize the production by field size so that the values can be compared.
+### Cumulative weight per field
 
-We know that the field sizes are: 
-
-* 93 - 1.51 ha
-* 96 - 1.31 ha
-* 101 - 2.07 ha
-* 102 - 1.12 ha
-* 1011 - 2.21 ha
+It seems interesting to look at a field as a continuous unit and measure the cumulative harvest over time. 
 
 ```{r}
-# Its nice to have the coloumn names handy
-names(dat.sum_f)
-
-# here we will have to spread the data to wide format, create new coloumns for production/ha, gather the data back to long format and drop the nas
-norm.dat.w <- dat.sum_f %>%
-  spread(key = Field, value = cumsum) %>%
-  group_by(month) %>%
-  mutate(ha.93 = f93 /1.51,
-         ha.96 = f96 /1.31,
-         ha.101 = f101/2.07,
-         ha.1011 = ff1011/2.21,
-         ha.102 = f102/1.12) 
-
-norm.dat.l <-
-  norm.dat.w %>%
-  select(month, ha.93, ha.96, ha.101, ha.1011, ha.102) %>%
-  gather(field, tonnage, 2:6)%>%
-  drop_na()
-  
-glimpse(norm.dat.l)
+# Creating a cumulative bunches harvest for each field
+names(dat)
+dat.sum_f.w <- 
+  dat %>%
+  group_by(Field) %>%
+  mutate(cumsum = cumsum(weight))
 ```
 
 ```{r plotnormalize,}
-names(norm.dat.l)
-ggplot(data = norm.dat.l, aes(x = month, y = tonnage, colour = field)) +
+names(dat.sum_f.w)
+ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
   geom_line() +
   #geom_bar(stat = "identity") +
-  #geom_smooth(method = "lm") +
-  #geom_smooth(method = "loess", span = 0.1) +
+  geom_smooth(method = "lm") +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
-  labs(y = "Banana bunches", x = "Time") 
-  #facet_wrap(~field, ncol = 2)
+  labs(y = "Weight (kg)", x = "Year") +
+  scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  theme_bw()
+  #facet_wrap(~Field, ncol = 2)
 ```
 
 The awesome thing about this is that you can very easily turn a plot into something more than just a plot using `plotly`
@@ -257,26 +217,21 @@ The awesome thing about this is that you can very easily turn a plot into someth
 #devtools::install_github("hadley/ggplot2")
 library(plotly)
 
-plotly <- ggplot(data = norm.dat.l, aes(x = month, y = tonnage, colour = field)) +
+plotly <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
   geom_line() +
   #geom_bar(stat = "identity") +
   geom_smooth(method = "lm") +
   #geom_smooth(method = "loess", span = 0.1) +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
-  labs(y = "Banana bunches", x = "Time") 
+  labs(y = "Weight (kg)", x = "Year") +
+  scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  theme_bw()
   #facet_wrap(~field, ncol = 2)
 
 ggplotly(plotly)
 ```
 
-
-
-```{r}
-library(nlme)
-mountain.lm <- lm(tonnage ~ field, data = norm.dat.l)
-tidy(mountain.lm)
-```
 
 
 
