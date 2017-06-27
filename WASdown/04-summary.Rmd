@@ -1,3 +1,4 @@
 # Final Words
+To summarize, R, Rstudio, GitHub, and many other R related tie-ins are capable of adding an unbleiveable amount of substance to our work. Furthermore, object oriented command line programming (such as R) is no longer the realm exclusively of hard core nerds. One no longer needs to speak Klingon to be a coder. We have shown in this book that there are now a massive amount of resources freely available via the internet that one may use to jump into the world of R with both feet.
 
-To summarize
+It is the hope of the authors that we have done enough to spark the reader's interest and that after this workshop serious consideration will be given to changing workflows over from whatever pointy clicky software was being used to the more scientifically appropriate method of using code. Whereas the short-term effort may feel painful, we can guarantee that the long-term benefits more than make up for any initial discomfort.
