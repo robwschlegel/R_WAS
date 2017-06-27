@@ -2,7 +2,13 @@
 
 This report shows analyses performed and figures created from 10+ years of petrol usage with a 2003 Volkswagen Polo sedan (1.4).
 
-## Loading the data
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics("images/vw_polo.jpg")
+```
+
+The purpose is to illustrate the use of Rmarkdown with data analyses.
+
+## Loading and prepping the data
 
 ```{r, message=FALSE}
 # Load libraries
@@ -12,7 +18,6 @@ library(broom)
 
 # Load data
 petrol <- read.csv("data/petrol_info.csv")
-#petrol <- read.csv("~/R_WAS/petrol_info.csv")
 
 # Correct date
 petrol$date <- as.Date(petrol$date, "%d-%m-%y")
@@ -29,10 +34,15 @@ petrol <- petrol[complete.cases(petrol),]
 petrol$month <- floor_date(petrol$date, "month")
 petrol$year <- floor_date(petrol$date, "year")
 
+# Create a column showing distance between fill-ups
+petrol$dist <- c(0,diff(as.matrix(petrol$odom)))
+
+# Total distance traveled
+petrol$dist_total <- petrol$odom-petrol$odom[1]
 ```
 
 
-## Graphical observations
+## Distances traveled
 
 Over the lifespan of a vehicle, one constant will always be the increasing count of the odometre. We may plot this as a time series.
 
@@ -46,32 +56,14 @@ ggplot(data = petrol, aes(x = date, y = odom)) +
 
 Also of interest is how far the distances between fill ups may be. There are a couple of gaps in this time series, which lend themselves to some dramatic numbers, but overall we are able to get an idea of the true distances.
 
-```{r, message=FALSE, warning=FALSE, fig.cap="Same as previous figure with the total distance between fill ups shown with a blue line."}
-# Create a column showing distance between fill-ups
-petrol$dist <- c(0,diff(as.matrix(petrol$odom)))
-
-# Total distance traveled
-petrol$dist_total <- petrol$odom-petrol$odom[1]
-
-# Histogram
-ggplot(data = petrol, aes(x = date, y = odom)) +
-  geom_line() +
-  geom_point() +
-  geom_line(aes(y = dist), colour = "blue") +
-  scale_y_continuous(breaks = seq(0, 200000, 40000)) +
-  labs(y = "distance (km)", x = "")
-```
-
-This blue line would provide more useful information if visualised as a histogram.
-
-```{r, message=FALSE, warning=FALSE, fig.cap="Histogram showing the distances traveled between fillings. Any values over 1,000km were subsetted out."}
+```{r, message=FALSE, warning=FALSE, fig.cap="Histogram showing the distances traveled between fillings. Any values over 1,000 km were subsetted out."}
 ggplot(data = petrol[petrol$dist <= 1000,], aes(x = dist)) +
   geom_histogram(fill = "violet", colour = "grey40")
 ```
 
-This histogram shows a bimodal distribution with a clustering of distances around 100 kms and 600 kms. This is not so strange if you think about it as it shows that this driver would tend to either go short distance between filling up, or long distances. This is likely linked to spending behaviours, which is the next thing to investigate.
+This histogram shows a bimodal distribution with a clustering of distances around 100 kms and 600 kms. This is not so strange if you think about it as it shows that this driver would tend to either go short distances between filling up, or long distances. This is likely linked to spending behaviours, which is the next thing to investigate.
 
-## Spending patterns
+## Spending behaviour
 We may produce another histogram to plot the amount of money spent per visit to the petrol station.
 
 ```{r, message=FALSE, warning=FALSE, fig.cap="Histogram showing the amount of money spent per visit to the petrol station. The colours show if the tank was filled during that visit or not."}
@@ -80,12 +72,12 @@ ggplot(data = petrol, aes(x = cost)) +
   labs(x = "Price (R)")
 ```
 
-The distribution shown in this histogram is also not surprising if one thinks about it. This histogram is showing two different spending habits. On the left hand side we see that there are distinct columns rising out from the others. This is when the driver went to the station and spent specifically, R20, R50, R100, R200, R300 or R400. On the right hand side of the histogram we see a more normal distribution of columns. These are the prices spent when filling up the tank to full. 
+This histogram is showing two different spending habits. On the left hand side we see that there are distinct columns rising out from the others. This is when the driver went to the station and spent specifically, R20, R50, R100, R200, R300 or R400. On the right hand side of the histogram we see a more normal distribution of columns. These are the prices spent when filling up the tank to full. 
 
 ## Petrol usage per km
-One of the first things any car owner wants to know about their vehicle is the mileage their vehicle is getting. And whether or not this is decreasing with wear. Because we don't know exactly how much petrol is used between each fill up this becomes a bit tricky. We overcome this challenge by creating annual sums of petrol use. With these we may then calculate the distance traveled per litre more broadly. Monthly means are too erratic to be useful.
+One of the first things any car owner wants to know about their vehicle is the mileage their vehicle is getting. And whether or not this is decreasing with wear. Because we don't know exactly how much petrol is used between each fill up this becomes a bit tricky. We overcome this challenge somewhat by creating annual sums of petrol use. With these we may then calculate the distance traveled per litre more broadly. Monthly means are too erratic to be useful.
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=FALSE, message=FALSE, fig.cap="Line graph showing the progression of the cars mileabe over time. A linear model (blue) and non-linear model (red) are fitted to these data. The grey areas around the fitted models show the standard error (se) of the fit."}
 # Create monthly means
 petrol_annual <- petrol %>%
   select(-full, -date, -month) %>%
@@ -103,33 +95,25 @@ ggplot(data = petrol_annual, aes (x = year, y = dist_litre)) +
   geom_line() +
   geom_point() +
   geom_smooth(colour = "red") +
-  geom_smooth(method = "lm")
-
+  geom_smooth(method = "lm") +
+  labs(y = "km/litre", x = NULL)
 ```
 
-As we may see, the mileage appears to increase until 2013 when it then falls precipitously. The overall change in mileage for this car appears flat when modeled linearly.
+As we may see, the mileage appears to increase until 2013 when it then falls precipitously. The overall change in mileage for this car however appears flat when modeled linearly.
 
 ## Petrol prices
-Of interest to everyone is the price of petrol. Both how much we have spent and how much we have to spend every time we pull up to the station. First we see a lolliplot of spending behaviour.
+We've saved the best for last as the most interesting thing for most people that could be extracted from these records is the price of petrol over the last decade. Both how much petrol costs per litre and how much must be spent every time we pull up to the station. First we see a lolliplot of how much was spent at each station visit.
 
-```{r}
+```{r, fig.cap="Lolliplot showing ."}
 # Calculate total amount spent
 petrol$cost_total <- cumsum(petrol$cost)
 
 # Lolli plot
 ggplot(data = petrol, aes(x = date, y = cost)) +
-  geom_point() +
-  geom_segment(aes(xend = date, y = 0, yend = cost)) +
+  geom_point(aes(colour = full)) +
+  geom_segment(aes(xend = date, y = 0, yend = cost, colour = full)) +
   labs(y = "cost (R)", x = "")
-
 ```
-
-```{r}
-ggplot(data = petrol, aes(x = date, y = cost_total)) +
-  geom_line() +
-  geom_point() 
-```
-
 
 And then the price per litre averaged per month.
 
@@ -142,14 +126,15 @@ petrol_monthly <- petrol %>%
   mutate(price_litre = cost/litre)
 
 # Fill in missing months
-month_index <- data.frame(month = seq(petrol_monthly$month[1], petrol_monthly$month[nrow(petrol_monthly)], by = "month"))
+month_index <- data.frame(month = seq(petrol_monthly$month[1], 
+                                      petrol_monthly$month[nrow(petrol_monthly)], by = "month"))
 petrol_monthly <- merge(petrol_monthly, month_index, by = "month", all.y = TRUE)
 
 petrol_trend <- lm(petrol_monthly$price_litre ~ seq(1:nrow(petrol_monthly)))
 petrol_augment <- augment(petrol_trend)
 petrol_tidy <- tidy(petrol_trend)
 petrol_glance <- glance(petrol_trend)
-petrol_tidy$estimate[2]*12
+# petrol_tidy$estimate[2]*12
 # R 0.72/ month
 
 # Line graph
@@ -158,8 +143,10 @@ ggplot(data = petrol_monthly, aes(x = month, y = price_litre)) +
   geom_point() +
   geom_smooth(method = "lm") +
   geom_text(aes(x = as.Date("2009-01-01"), y = 13, 
-                label = paste0("Increase = R", round(petrol_tidy$estimate[2]*12, 2), " /month"))) +
+                label = paste0("Increase = R", round(petrol_tidy$estimate[2]*12, 2), "/year"))) +
   # geom_point(data = petrol[187,], colour = "red")
   # scale_y_continuous(breaks = seq(80000, 200000, 20000)) +
-  labs(y = "price/ litre", x = "")
+  labs(y = "R/litre", x = "")
 ```
+
+And there we have it. Petrol prices in SA have increased R0.72/year over the last 10 years.
