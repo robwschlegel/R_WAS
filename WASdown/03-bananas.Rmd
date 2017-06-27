@@ -36,20 +36,16 @@ production$year <- floor_date(production$Date, "year")
 
 ```
 
-## Assign the data
-
-```{r}
-dat <- production
-```
-
-
-## Plotting bunches per month
+## Investigating by bunch
 
 ### Bunches per month
 
 If we were to try an plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing.
 
 ```{r plota, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the number of banana bunches harvested per month."}
+# Creating a dataset that can be played with further
+dat <- production
+
 names(dat)
 ggplot(data = dat, aes(x = month, y = Bunches)) +
   geom_bar(stat = "identity") +
@@ -130,7 +126,7 @@ tidy(TukeyHSD(aov))
 ```
 
 
-## Plotting bunches per field
+## Investigating by field
 
 ```{r}
 # Creating a cum for each month grouped by field
@@ -164,7 +160,10 @@ names(dat)
 dat.sum_f <- 
   dat %>%
   group_by(Field) %>%
-  mutate(cumsum = cumsum(Bunches))
+  mutate(cumsum = cumsum(Bunches),
+         Fields = as.factor(Field)) %>%
+  ungroup()
+  
 ```
 
 In Figure \@ref(fig:plot-line) the cumulative number of bunches harvested for each field highlights that they are not all performing the same. We could quickly add a linear model to this to further visualize the trend.
