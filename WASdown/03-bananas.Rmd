@@ -1,5 +1,9 @@
 # Bananas
 
+```{r, echo = FALSE, out.width = "75%"}
+knitr::include_graphics("images/masheleni.png")
+```
+
 On my farm we have a total of 40 hectares of land. Of this 18 hectares is natural forest with 16 hectares of sugar cane and 6 hectares of bananas. Bananas grow throughout the year and from sucker to fruit is approximately 18 months. Under field management practices we are able to maintain three stages of banana trees on each spot thereby decreasing the time to fruit to six month intervals. It is recommended that every 10 years the field is to be replanted to maximize production however, these banana fields have not been replanted recently and it is our intention to investigate what this may mean for the production. 
 
 ## Loading the data
@@ -34,13 +38,12 @@ production$month <- floor_date(production$Date, "month")
 production$year <- floor_date(production$Date, "year")
 ```
 
-<<<<<<< HEAD
 ## Investigating by bunch
 
 ### Bunches per month
 
 If we were to try an plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing.
-=======
+
 ### Working with the data in tidyverse
 
 The fields were recorded as numbers but I would rather have the prefixed by 'f' so that I do not confuse them with production.
@@ -60,12 +63,8 @@ dat <- production %>%
 ### Bunches per month
 
 If we were to try and plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing. To have a look at what this problem might be I will inspect the data frame and trouble shoot
->>>>>>> 7a70bd779cf308bd6c07c70b328d25888abb341a
 
 ```{r plota, message=FALSE, warning=FALSE, fig.cap="Bar graph showing the number of banana bunches harvested per month."}
-# Creating a dataset that can be played with further
-dat <- production
-
 names(dat)
 ggplot(data = dat, aes(x = month, y = Bunches)) +
   geom_bar(stat = "identity") +
@@ -75,8 +74,6 @@ ggplot(data = dat, aes(x = month, y = Bunches)) +
   labs(y = "Banana bunches", x = "Time")
 ```
 
-<<<<<<< HEAD
-=======
 #### Problematic smooth
 
 ```{r}
@@ -87,8 +84,6 @@ str(dat)
 ```
 
 After looking at both the `str` and the data frame the problem is that `Bunches` are not being summed by month. This is an easy fix.
-
->>>>>>> 7a70bd779cf308bd6c07c70b328d25888abb341a
 
 ### Bunches per month
 
@@ -156,7 +151,6 @@ tidy(aov)
 tidy(TukeyHSD(aov))
 ```
 
-
 ## Investigating by field
 
 ```{r}
@@ -191,10 +185,9 @@ names(dat)
 dat.sum_f <- 
   dat %>%
   group_by(Field) %>%
-  mutate(cumsum = cumsum(Bunches),
-         Fields = as.factor(Field)) %>%
+  mutate(cumsum = cumsum(Bunches)) %>%
   ungroup()
-  
+
 ```
 
 In Figure \@ref(fig:plot-line) the cumulative number of bunches harvested for each field highlights that they are not all performing the same. We could quickly add a linear model to this to further visualize the trend.
@@ -211,7 +204,6 @@ ggplot(data = dat.sum_f, aes(x = Date, y = cumsum, colour = Field)) +
   #facet_wrap(~Field, ncol = 2)
 
 ```
-
 
 ### Cumulative weight per field
 
@@ -262,18 +254,11 @@ plotly <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) 
 ggplotly(plotly)
 ```
 
-
-
-<<<<<<< HEAD
-=======
 ```{r, warning=FALSE, message=FALSE}
-library(nlme)
-mountain.lm <- lm(tonnage ~ field, data = norm.dat.l)
-tidy(mountain.lm)
+weight.lm <- lm(cumsum ~ Field, data = dat.sum_f.w)
+tidy(weight.lm)
 ```
 
-
->>>>>>> 7a70bd779cf308bd6c07c70b328d25888abb341a
 
 
 
