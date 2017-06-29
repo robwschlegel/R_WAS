@@ -71,21 +71,13 @@ For collaborating -
 
 ### Roles
 
-* Communication
-    + Twitter
-    + Popular articles
-    + Public speaking
-* Interdisciplinary work
-* Collaboration
-    + Beyond your lab
-
 
 <div class="notes">
 We can add more points to this during the session which we push to Git as part of the Demo
 </div>
 
 
-## A tradional approach to the scientific method
+## A tradional approach of the scientific method
 
 1) Devise a fancy question and call it a hypothesis
 
