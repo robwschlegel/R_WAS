@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WASdown</title>
+  <meta name="description" content="This book is built as an infomration package meant for the student workshop at #WorldAqua17">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="WASdown" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/logo_bw.png" />
+  <meta property="og:description" content="This book is built as an infomration package meant for the student workshop at #WorldAqua17" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="WASdown" />
+  
+  <meta name="twitter:description" content="This book is built as an infomration package meant for the student workshop at #WorldAqua17" />
+  <meta name="twitter:image" content="images/logo_bw.png" />
+
+<meta name="author" content="Morgan Brand and Robert Schlegel">
+
+
+<meta name="date" content="2017-06-29">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="colophon.html">
+<link rel="next" href="petrol.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">The use of R Rstudio and Github</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preamble</a></li>
+<li class="chapter" data-level="" data-path="colophon.html"><a href="colophon.html"><i class="fa fa-check"></i>Colophon</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#r-for-data-science"><i class="fa fa-check"></i><b>1.1</b> <a href="http://r4ds.had.co.nz/index.html">R for Data Science</a></a><ul>
+<li class="chapter" data-level="1.1.1" data-path="intro.html"><a href="intro.html#r"><i class="fa fa-check"></i><b>1.1.1</b> R</a></li>
+<li class="chapter" data-level="1.1.2" data-path="intro.html"><a href="intro.html#rstudio"><i class="fa fa-check"></i><b>1.1.2</b> RStudio</a></li>
+<li class="chapter" data-level="1.1.3" data-path="intro.html"><a href="intro.html#the-tidyverse"><i class="fa fa-check"></i><b>1.1.3</b> The tidyverse</a></li>
+<li class="chapter" data-level="1.1.4" data-path="intro.html"><a href="intro.html#r-markdown"><i class="fa fa-check"></i><b>1.1.4</b> R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="intro.html"><a href="intro.html#thesisdown"><i class="fa fa-check"></i><b>1.2</b> <a href="https://github.com/ismayc/thesisdown">Thesisdown</a></a><ul>
+<li class="chapter" data-level="1.2.1" data-path="intro.html"><a href="intro.html#the-basic-filing-structure"><i class="fa fa-check"></i><b>1.2.1</b> The basic filing structure</a></li>
+<li class="chapter" data-level="1.2.2" data-path="intro.html"><a href="intro.html#pdf-output"><i class="fa fa-check"></i><b>1.2.2</b> PDF output</a></li>
+<li class="chapter" data-level="1.2.3" data-path="intro.html"><a href="intro.html#yaml"><i class="fa fa-check"></i><b>1.2.3</b> YAML</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="intro.html"><a href="intro.html#blogdown"><i class="fa fa-check"></i><b>1.3</b> <a href="https://github.com/rstudio/blogdown">Blogdown</a></a></li>
+<li class="chapter" data-level="1.4" data-path="intro.html"><a href="intro.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and Github</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="intro.html"><a href="intro.html#why-git"><i class="fa fa-check"></i><b>1.4.1</b> Why Git?</a></li>
+<li class="chapter" data-level="1.4.2" data-path="intro.html"><a href="intro.html#why-github"><i class="fa fa-check"></i><b>1.4.2</b> Why GitHub?</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="intro.html"><a href="intro.html#twitterverse"><i class="fa fa-check"></i><b>1.5</b> Twitterverse</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="petrol.html"><a href="petrol.html"><i class="fa fa-check"></i><b>2</b> Petrol</a><ul>
+<li class="chapter" data-level="2.1" data-path="petrol.html"><a href="petrol.html#loading-and-prepping-the-data"><i class="fa fa-check"></i><b>2.1</b> Loading and prepping the data</a></li>
+<li class="chapter" data-level="2.2" data-path="petrol.html"><a href="petrol.html#distances-traveled"><i class="fa fa-check"></i><b>2.2</b> Distances traveled</a></li>
+<li class="chapter" data-level="2.3" data-path="petrol.html"><a href="petrol.html#spending-behaviour"><i class="fa fa-check"></i><b>2.3</b> Spending behaviour</a></li>
+<li class="chapter" data-level="2.4" data-path="petrol.html"><a href="petrol.html#petrol-usage-per-km"><i class="fa fa-check"></i><b>2.4</b> Petrol usage per km</a></li>
+<li class="chapter" data-level="2.5" data-path="petrol.html"><a href="petrol.html#petrol-prices"><i class="fa fa-check"></i><b>2.5</b> Petrol prices</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="bananas.html"><a href="bananas.html"><i class="fa fa-check"></i><b>3</b> Bananas</a><ul>
+<li class="chapter" data-level="3.1" data-path="bananas.html"><a href="bananas.html#loading-the-data"><i class="fa fa-check"></i><b>3.1</b> Loading the data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="bananas.html"><a href="bananas.html#setting-date"><i class="fa fa-check"></i><b>3.1.1</b> Setting date</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="bananas.html"><a href="bananas.html#investigating-by-bunch"><i class="fa fa-check"></i><b>3.2</b> Investigating by bunch</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="bananas.html"><a href="bananas.html#bunches-per-month"><i class="fa fa-check"></i><b>3.2.1</b> Bunches per month</a></li>
+<li class="chapter" data-level="3.2.2" data-path="bananas.html"><a href="bananas.html#statistics"><i class="fa fa-check"></i><b>3.2.2</b> Statistics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="bananas.html"><a href="bananas.html#investigating-by-field"><i class="fa fa-check"></i><b>3.3</b> Investigating by field</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="bananas.html"><a href="bananas.html#cumulative-bunches-per-field"><i class="fa fa-check"></i><b>3.3.1</b> Cumulative bunches per field</a></li>
+<li class="chapter" data-level="3.3.2" data-path="bananas.html"><a href="bananas.html#cumulative-weight-per-field"><i class="fa fa-check"></i><b>3.3.2</b> Cumulative weight per field</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="bananas.html"><a href="bananas.html#production-per-hectare"><i class="fa fa-check"></i><b>3.4</b> Production per hectare</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>4</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">WASdown</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>Before you will be in any shape to get <strong>R</strong>rring you will need to download the basics. Luckily there are lots of resources that can guide you through this process.</p>
+<p>The following is an excerpt from the book by <a href="https://twitter.com/statgarrett">@statgarrett</a> and <a href="https://twitter.com/hadleywickham">@hadleywickham</a></p>
+<div id="r-for-data-science" class="section level2">
+<h2><span class="header-section-number">1.1</span> <a href="http://r4ds.had.co.nz/index.html">R for Data Science</a></h2>
+<p>Taken from <a href="http://r4ds.had.co.nz/index.html">R for Data Science</a> and unchanged licensed under the <a href="http://creativecommons.org/licenses/by-nc-nd/3.0/us/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0</a> United States License.</p>
+<div id="r" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> R</h3>
+<p>To download R, go to CRAN, the <strong>c</strong>omprehensive <strong>R</strong> <strong>a</strong>rchive <strong>n</strong>etwork. CRAN is composed of a set of mirror servers distributed around the world and is used to distribute R and R packages. Don’t try and pick a mirror that’s close to you: instead use the cloud mirror, <a href="https://cloud.r-project.org" class="uri">https://cloud.r-project.org</a>, which automatically figures it out for you.</p>
+<p>A new major version of R comes out once a year, and there are 2-3 minor releases each year. It’s a good idea to update regularly. Upgrading can be a bit of a hassle, especially for major versions, which require you to re-install all your packages, but putting it off only makes it worse.</p>
+</div>
+<div id="rstudio" class="section level3">
+<h3><span class="header-section-number">1.1.2</span> RStudio</h3>
+<p>RStudio is an integrated development environment, or IDE, for R programming. Download and install it from <a href="http://www.rstudio.com/download" class="uri">http://www.rstudio.com/download</a>. RStudio is updated a couple of times a year. When a new version is available, RStudio will let you know. It’s a good idea to upgrade regularly so you can take advantage of the latest and greatest features. For this book, make sure you have RStudio 1.0.0.</p>
+<p>When you start RStudio, you’ll see two key regions in the interface:</p>
+<p><img src="images/rstudio-console.png" width="75%" /></p>
+<p>For now, all you need to know is that you type R code in the console pane, and press enter to run it. You’ll learn more as we go along!</p>
+</div>
+<div id="the-tidyverse" class="section level3">
+<h3><span class="header-section-number">1.1.3</span> The tidyverse</h3>
+<p>You’ll also need to install some R packages. An R <strong>package</strong> is a collection of functions, data, and documentation that extends the capabilities of base R. Using packages is key to the successful use of R. The packages in the tidyverse share a common philosophy of data and R programming, and are designed to work together naturally.</p>
+<p>You can install the complete tidyverse with a single line of code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre></div>
+<p>On your own computer, type that line of code in the console, and then press enter to run it. R will download the packages from CRAN and install them on to your computer. If you have problems installing, make sure that you are connected to the internet, and that <a href="https://cloud.r-project.org/" class="uri">https://cloud.r-project.org/</a> isn’t blocked by your firewall or proxy.</p>
+<p>You will not be able to use the functions, objects, and help files in a package until you load it with <code>library()</code>. Once you have installed a package, you can load it with the <code>library()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre></div>
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.3.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 3.3.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.3.2</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 3.3.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 3.3.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.3.2</code></pre>
+<p>This tells you that tidyverse is loading the ggplot2, tibble, tidyr, readr, purrr, and dplyr packages. These are considered to be the <strong>core</strong> of the tidyverse because you’ll use them in almost every analysis.</p>
+</div>
+<div id="r-markdown" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> R Markdown</h3>
+<p>R Markdown provides an unified authoring framework for data science, combining your code, its results, and your prose commentary. R Markdown documents are fully reproducible and support dozens of output formats, like PDFs, Word files, slideshows, and more.</p>
+<p>R Markdown files are designed to be used in three ways:</p>
+<ol style="list-style-type: decimal">
+<li><p>For communicating to decision makers, who want to focus on the conclusions, not the code behind the analysis.</p></li>
+<li><p>For collaborating with other data scientists (including future you!), who are interested in both your conclusions, and how you reached them (i.e. the code).</p></li>
+<li><p>As an environment in which to <em>do</em> data science, as a modern day lab notebook where you can capture not only what you did, but also what you were thinking.</p></li>
+</ol>
+<p>R Markdown integrates a number of R packages and external tools. This means that help is, by-and-large, not available through <code>?</code>. Instead, as you work through this chapter, and use R Markdown in the future, keep these resources close to hand:</p>
+<ul>
+<li><p>R Markdown Cheat Sheet: <em>Help &gt; Cheatsheets &gt; R Markdown Cheat Sheet</em>,</p></li>
+<li><p>R Markdown Reference Guide: <em>Help &gt; Cheatsheets &gt; R Markdown Reference Guide</em>.</p></li>
+</ul>
+<p>Both cheatsheets are also available at <a href="http://rstudio.com/cheatsheets" class="uri">http://rstudio.com/cheatsheets</a>.</p>
+</div>
+</div>
+<div id="thesisdown" class="section level2">
+<h2><span class="header-section-number">1.2</span> <a href="https://github.com/ismayc/thesisdown">Thesisdown</a></h2>
+<p><a href="https://github.com/ismayc/thesisdown">Thesisdown</a> is built from <a href="https://bookdown.org/home/">Bookdown</a>. It is a very useful tool to start working from if your goal is to submit your thesis using the language R Markdown. The <a href="https://github.com/ismayc/thesisdown">Thesisdown</a> package was written by <a href="https://twitter.com/old_man_chester">@Old_Man_Chester</a></p>
+<hr />
+<p>This project was inspired by the <a href="http://github.com/rstudio/bookdown">bookdown</a> package and is an updated version of my Senior Thesis template in the <code>reedtemplates</code> package <a href="http://github.com/ismayc/reedtemplates">here</a>.</p>
+<p>Currently, the PDF and gitbook versions are fully-functional. The word and epub versions are developmental, have no templates behind them, and are essentially calls to the appropriate functions in bookdown.</p>
+<p>The current output for the four versions is here:</p>
+<ul>
+<li><a href="https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.pdf">PDF</a> (Generating LaTeX file is available <a href="https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.tex">here</a> with other files at in the <a href="https://github.com/ismayc/thesisdown_book/tree/gh-pages">book directory</a>.)</li>
+<li><a href="https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.docx">Word</a></li>
+<li><a href="https://github.com/ismayc/thesisdown_book/blob/gh-pages/thesis.epub">ePub</a></li>
+<li><a href="http://ismayc.github.io/thesisdown_book">gitbook</a></li>
+</ul>
+<p>Under the hood, the Reed College LaTeX template (and soon the Reed College Word template) is used to ensure that documents conform precisely to submission standards. At the same time, composition and formatting can be done using lightweight <a href="http://rmarkdown.rstudio.com/authoring_basics.html">markdown</a> syntax, and <strong>R</strong> code and its output can be seamlessly included using <a href="http://rmarkdown.rstudio.com">rmarkdown</a>.</p>
+<p>Using <strong>thesisdown</strong> has some prerequisites which are described below. To compile PDF documents using <strong>R</strong>, you are going to need to have LaTeX installed. It can be downloaded for Windows at <a href="http://http://miktex.org/download" class="uri">http://http://miktex.org/download</a> and for Mac at <a href="http://tug.org/mactex/mactex-download.html" class="uri">http://tug.org/mactex/mactex-download.html</a>. Follow the instructions to install the necessary packages after downloading the (somewhat large) installer files. You may need to install a few extra LaTeX packages on your first attempt to knit as well.</p>
+<div id="the-basic-filing-structure" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> The basic filing structure</h3>
+<p><img src="images/reed_files.png" width="75%" /></p>
+</div>
+<div id="pdf-output" class="section level3">
+<h3><span class="header-section-number">1.2.2</span> PDF output</h3>
+<p><img src="images/reed_thesis_demo.png" width="75%" /></p>
+</div>
+<div id="yaml" class="section level3">
+<h3><span class="header-section-number">1.2.3</span> YAML</h3>
+<p><img src="images/reed_yaml.png" width="75%" /></p>
+</div>
+</div>
+<div id="blogdown" class="section level2">
+<h2><span class="header-section-number">1.3</span> <a href="https://github.com/rstudio/blogdown">Blogdown</a></h2>
+<p>The beauty of a platform like <a href="https://github.com/rstudio/blogdown">Blogdown</a> is in its ability to transport your scientific work into the public domain with very little extra effort. A website is generated from R Markdown documents. You can include all your results, analysis, graphics and can be computed and rendered dynamically from R code to your website!</p>
+<p><a href="https://twitter.com/xieyihui">@xieyihui</a> and <a href="https://proquestionasker.github.io/">@Amber Thomas</a> have put together an open book using bookdown which details the process of setting up a blogdown for your own private use. A section of their book, <a href="https://bookdown.org/yihui/blogdown/">Creating Websites with R Markdown</a> is included below and the online version is licensed under the <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</p>
+<p>We introduce an R package, <strong>blogdown</strong>, in this short book, to teach you how to create websites using R Markdown and Hugo. If you have experience with creating websites, you may naturally ask what the benefits of using R Markdown are, and how <strong>blogdown</strong> is different with existing popular website platforms, such as WordPress. There are two major highlights of <strong>blogdown</strong>:</p>
+<ol style="list-style-type: decimal">
+<li><p>It produces a static website, meaning the website only consists of static files such as HTML, CSS, JavaScript, and images, etc. You can host the website on any web servers (see Chapter <a href="#deployment"><strong>??</strong></a> for details). The website does not require server-side scripts such as PHP or databases like WordPress does. It is just one folder of static files. We will explain more benefits of static websites in Chapter <a href="#hugo"><strong>??</strong></a>, when we introduce the static website generator Hugo.</p></li>
+<li><p>The website is generated from R Markdown documents (R is optional, i.e., you can use plain Markdown documents without R code chunks). This brings a huge amount of benefits, especially if your website is related to data analysis or (R) programming. Being able to use Markdown implies simplicity and more importantly, <em>portability</em> (e.g., you are giving yourself the chance to convert your blog posts to PDF and publish to journals or even books in the future). R Markdown gives you the benefits of dynamic documents — all your results, such as tables, graphics, and inline values, can be computed and rendered dynamically from R code, hence the results you present on your website are more likely to be reproducible. An additional yet important benefit of using R Markdown is that you will be able to write technical documents easily, due to the fact that <strong>blogdown</strong> inherits the HTML output format from <strong>bookdown</strong> <span class="citation">(Xie <a href="#ref-R-bookdown">2017</a>)</span>. For example, it is possible to write LaTeX math equations, BibTeX citations, and even theorems and proofs if you want.</p></li>
+</ol>
+<p>Please do not be misled by the word “blog” in the package name: <strong>blogdown</strong> is for general-purpose websites, and not only for blogs. For example, both authors of this book have their personal websites, where you can find information about their projects, blogs, package documentations, and so on.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> All their pages are built from <strong>blogdown</strong> and Hugo.</p>
+</div>
+<div id="git-and-github" class="section level2">
+<h2><span class="header-section-number">1.4</span> Git and Github</h2>
+<p>The initial process of getting git sorted may be challenging but we encourage you to persist and get it set up. Again, there are several online resources which provide detailed step by steps and it is not our intention to guide you through this but rather point you towards some of the ‘good’ ones.</p>
+<p>For this section we have taken content from <a href="http://happygitwithr.com/">Happy Git and GitHub for the useR</a> which was written by <a href="https://twitter.com/JennyBryan">@JennyBryan</a> and licensed under <a href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+<div id="why-git" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Why Git?</h3>
+<p><a href="http://git-scm.com">Git</a> is a <strong>version control system</strong>. Its original purpose was to help groups of developers work collaboratively on big software projects. Git manages the evolution of a set of files – called a <strong>repository</strong> – in a sane, highly structured way. If you have no idea what I’m talking about, think of it as the “Track Changes” features from Microsoft Word on steroids.</p>
+<p>Git has been re-purposed by the data science community. In addition to using it for source code, we use it to manage the motley collection of files that make up typical data analysis projects, which often consist of data, figures, reports, and, yes, source code.</p>
+<p>A solo data analyst, working on a single computer, will benefit from adopting version control. But not nearly enough to justify the pain of installation and workflow upheaval. There are much easier ways to get versioned back ups of your files, if that’s all you’re worried about.</p>
+<p>In my opinion, <strong>for new users</strong>, the pros of Git only outweigh the cons when you factor in the overhead of communicating and collaborating with other people. Who among us does not need to do that? Your life is much easier if this is baked into your workflow, as opposed to being a separate process that you dread or neglect.</p>
+</div>
+<div id="why-github" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Why GitHub?</h3>
+<p>This is where hosting services like <a href="https://github.com">GitHub</a>, <a href="https://bitbucket.org">Bitbucket</a>, and <a href="https://about.gitlab.com">GitLab</a> come in. They provide a home for your Git-based projects on the internet. If you have no idea what I’m talking about, think of it as DropBox but much, much better. The remote host acts as a distribution channel or clearinghouse for your Git-managed project. It allows other people to see your stuff, sync up with you, and perhaps even make changes. These hosting providers improve upon traditional Unix Git servers with well-designed web-based interfaces.</p>
+<p>Even for private solo projects, it’s a good idea to push your work to a remote location for peace of mind. Why? Because it’s fairly easy to screw up your local Git repository, especially when you’re new at this. The good news is that often only the Git infrastructure is borked up. Your files are just fine! Which makes your Git pickle all the more frustrating. There are official Git solutions to these problems, but they might require expertise and patience you can’t access at 3a.m. If you’ve recently pushed your work to GitHub, it’s easy to grab a fresh copy, patch things up with the changes that only exist locally, and get on with your life.</p>
+<p>Don’t get too caught up on public versus private at this point. There are many ways to get private repositories from the major providers for low or no cost. Just get started and figure out if and how Git/GitHub is going to work for you! If you outgrow this arrangement, you can throw some combination of technical savvy and money at the problem. You can either pay for a higher level of service or self-host one of these platforms.</p>
+<p>Outside of <a href="https://twitter.com/JennyBryan">@JennyBryan</a> book you can find a detailed guide to getting <strong>Git</strong>ed with RStudio by <a href="https://twitter.com/juliesquid">/<span class="citation">(<span class="citeproc-not-found" data-reference-id="juliesquid"><strong>???</strong></span>)</span></a> <a href="http://jules32.github.io/2016-07-12-Oxford/git/">here</a>.</p>
+</div>
+</div>
+<div id="twitterverse" class="section level2">
+<h2><span class="header-section-number">1.5</span> Twitterverse</h2>
+<p>You might also want to follow these guys on Twitter:</p>
+<ul>
+<li>Hadley Wickham <a href="https://twitter.com/hadleywickham">@hadleywickham</a></li>
+<li>Garrett Grolemund <a href="https://twitter.com/statgarrett">@statgarrett</a></li>
+<li>Chester Ismay <a href="https://twitter.com/old_man_chester">@Old_Man_Chester</a></li>
+<li>Yihui Xie <a href="https://twitter.com/xieyihui">@xieyihui</a></li>
+<li>Jenny Bryan <a href="https://twitter.com/JennyBryan">@JennyBryan</a></li>
+<li>RStudio Tips <a href="https://twitter.com/rstudiotips">@rstudiotips</a></li>
+</ul>
+<p>If you’re an active Twitter user, follow the <code>#rstats</code> hashtag.</p>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2017. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown" class="uri">https://github.com/rstudio/bookdown</a>.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Yihui’s homepage is at <a href="https://yihui.name" class="uri">https://yihui.name</a>. He writes blog posts in both Chinese (<a href="https://yihui.name/cn/" class="uri">https://yihui.name/cn/</a>) and English (<a href="https://yihui.name/en/" class="uri">https://yihui.name/en/</a>), and documents his software packages such as <strong>knitr</strong> (<a href="https://yihui.name/knitr/" class="uri">https://yihui.name/knitr/</a>) and <strong>animation</strong> (<a href="https://yihui.name/animation/" class="uri">https://yihui.name/animation/</a>). Occasionally he also writes articles like <a href="https://yihui.name/rlp/" class="uri">https://yihui.name/rlp/</a> when he finds interesting topics but does not bother a formal journal submission. Amber’s homepage is at <a href="https://proquestionasker.github.io" class="uri">https://proquestionasker.github.io</a>. Similarly, you can find her blog and project pages.<a href="intro.html#fnref1">↩</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="colophon.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="petrol.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/01-intro.Rmd",
+"text": "Edit"
+},
+"download": ["WASdown.pdf", "WASdown.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
