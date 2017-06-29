@@ -77,7 +77,7 @@ We can add more points to this during the session which we push to Git as part o
 </div>
 
 
-## A tradional approach to the scientific method
+## A tradional approach of the scientific method
 
 1) Devise a fancy question and call it a hypothesis
 
