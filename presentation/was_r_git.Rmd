@@ -71,14 +71,6 @@ For collaborating -
 
 ### Roles
 
-* Communication
-    + Twitter
-    + Popular articles
-    + Public speaking
-* Interdisciplinary work
-* Collaboration
-    + Beyond your lab
-
 
 <div class="notes">
 We can add more points to this during the session which we push to Git as part of the Demo
