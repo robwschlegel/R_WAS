@@ -70,7 +70,14 @@ For collaborating -
 <img src="figure/collaboration.jpg" width=400 height=500>
 
 ### Roles
-
+* Collaborations
+* Communication
+  + Tweeting
+  + Facebook
+  + Non-science periodicals
+  + Personal Blog
+* Open research
+  + Transparent methodology
 
 <div class="notes">
 We can add more points to this during the session which we push to Git as part of the Demo
@@ -96,7 +103,7 @@ We can add more points to this during the session which we push to Git as part o
       **REPEAT** steps 2 - 7 after receiving comments indefinately..
 
 
-## Disadvantages ot this process
+## Disadvantages of this process
 
 * The process of data capture is not open
 
@@ -120,6 +127,9 @@ We can add more points to this during the session which we push to Git as part o
     + customizability
     + beautiful visualizations
     + Any downsides?
+
+* Disadvantages
+  + Steep learning curve
 
 <div class="notes">
 We can add more points to this during the session which we push to Git as part of the Demo
