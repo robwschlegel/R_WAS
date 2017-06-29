@@ -40,25 +40,13 @@ production$year <- floor_date(production$Date, "year")
 
 ## Investigating by bunch
 
-### Bunches per month
-
-If we were to try an plot the data for number of bunches harvested per month we can start to see that there is some kind of cyclic trend (Figure \@ref(fig:plota)). On the plot I added a smooth (a model) in blue but there seems to be a problem with what it is doing.
-
-### Working with the data in tidyverse
-
-The fields were recorded as numbers but I would rather have the prefixed by 'f' so that I do not confuse them with production.
+It is sometimes useful to use a standard dat or data to assign to the data you wish to work with.
 
 ```{r}
-# I have used the pipe function from the package dply alongside the stringr package to do this
+# Open the dat data frame from the environment panel
 dat <- production %>%
-  mutate(Field = stringr::str_replace(Field, "93", "f93"),
-         Field = stringr::str_replace(Field, "96", "f96"),
-         Field = stringr::str_replace(Field, "101", "f101"),
-         Field = stringr::str_replace(Field, "1011", "f1011"),
-         Field = stringr::str_replace(Field, "102", "f102"))
+  mutate(Field = as.factor(Field))
 ```
-
-## Plotting bunches per month
 
 ### Bunches per month
 
@@ -79,13 +67,9 @@ ggplot(data = dat, aes(x = month, y = Bunches)) +
 ```{r}
 # The str function allows you to see both the variable type and the values.
 str(dat)
-
-# Open the dat data frame from the environment panel
 ```
 
 After looking at both the `str` and the data frame the problem is that `Bunches` are not being summed by month. This is an easy fix.
-
-### Bunches per month
 
 If we want to create a summary data set to only include the sum total of banana bunches per month we can simply use `dplyr` and the pipe function. This creates a sum total for bunches.month^-1^ and the blue line now fits the plot more appropriately (Figure \@ref(fig:plotb))
 
@@ -153,6 +137,9 @@ tidy(TukeyHSD(aov))
 
 ## Investigating by field
 
+Across the farm there are three 'fields' based on their location. When the bunches are harvested the data for field of origin is also captured. It is interesting to know how each field is performing.
+
+
 ```{r}
 # Creating a cum for each month grouped by field
 names(dat)
@@ -188,6 +175,8 @@ dat.sum_f <-
   mutate(cumsum = cumsum(Bunches)) %>%
   ungroup()
 
+str(dat.sum_f)
+
 ```
 
 In Figure \@ref(fig:plot-line) the cumulative number of bunches harvested for each field highlights that they are not all performing the same. We could quickly add a linear model to this to further visualize the trend.
@@ -218,12 +207,12 @@ dat.sum_f.w <-
   mutate(cumsum = cumsum(weight))
 ```
 
-```{r plotnormalize,}
+```{r}
 names(dat.sum_f.w)
 ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
   geom_line() +
   #geom_bar(stat = "identity") +
-  geom_smooth(method = "lm") +
+  #geom_smooth(method = "lm") +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
   labs(y = "Weight (kg)", x = "Year") +
@@ -234,32 +223,134 @@ ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
 
 The awesome thing about this is that you can very easily turn a plot into something more than just a plot using `plotly`
 
-```{r plotly, message=FALSE, warning=FALSE}
+```{r plotly, message=FALSE, warning=FALSE, out.width="90%", fig.asp=0.5, fig.align = "center"}
 #devtools::install_github("ropensci/plotly")
 #devtools::install_github("hadley/ggplot2")
 library(plotly)
 
-plotly <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
+bunch <- ggplot(data = dat.sum_f, aes(x = Date, y = cumsum, colour = Field)) +
   geom_line() +
   #geom_bar(stat = "identity") +
-  geom_smooth(method = "lm") +
+  #geom_smooth(method = "lm") + 
+  scale_y_continuous(breaks = seq(0, 20000, 5000)) +
+  theme_bw() +
+  theme(legend.direction = "horizontal",
+        legend.justification = "center",
+        legend.position = "top") +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Number of bunches", 
+       x = "Year") 
+  #facet_wrap(~Field, ncol = 2)
+
+weight <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
   #geom_smooth(method = "loess", span = 0.1) +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
-  labs(y = "Weight (kg)", x = "Year") +
+  labs(y = "Cumulative weight (kg)", 
+       x = "Year") +
   scale_y_continuous(breaks = seq(0, 400000, 50000)) +
-  theme_bw()
+  theme_bw() +
+  theme(legend.direction = "horizontal",
+        legend.justification = "center",
+        legend.position = "top") 
   #facet_wrap(~field, ncol = 2)
 
-ggplotly(plotly)
-```
-
-```{r, warning=FALSE, message=FALSE}
-weight.lm <- lm(cumsum ~ Field, data = dat.sum_f.w)
-tidy(weight.lm)
+library(gridExtra)
+grid.arrange(bunch, weight, nrow = 1)
 ```
 
 
+## What about per area
 
+The fields are not all the same size which we can standardise to a 
 
+```{r}
+
+data <- 
+  dat %>%
+  group_by(Field) %>%
+  mutate(cumsum = cumsum(weight)) %>%
+  ungroup() %>%
+  mutate(Field = stringr::str_replace(Field, "93", "f93"),
+         Field = stringr::str_replace(Field, "96", "f96"),
+         Field = stringr::str_replace(Field, "101", "f101"),
+         Field = stringr::str_replace(Field, "1011", "f1011"),
+         Field = stringr::str_replace(Field, "102", "f102")) %>%
+  spread(key = Field, value = cumsum) %>%
+  group_by(month) %>%
+  mutate(ha.93 = f93 /1.51,
+         ha.96 = f96 /1.31,
+         ha.101 = f101/2.07,
+         ha.1011 = ff1011/2.21,
+         ha.102 = f102/1.12) 
+
+dat.v2 <-
+  data %>%
+  select(month, ha.93, ha.96, ha.101, ha.1011, ha.102) %>%
+  gather(Field, Weight, 2:6)%>%
+  drop_na()
+
+```
+
+The end
+
+```{r}
+names(dat.v2)
+ggplot(data = dat.v2, aes(x = month, y = Weight, colour = Field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Weight (kg)", x = "Year") +
+  #scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  theme_bw()
+  #facet_wrap(~Field, ncol = 2)
+```
+
+```{r, message=FALSE, warning=FALSE, out.width="90%", fig.asp=0.5, fig.align = "center"}
+#devtools::install_github("ropensci/plotly")
+#devtools::install_github("hadley/ggplot2")
+library(plotly)
+
+area <- ggplot(data = dat.v2, aes(x = month, y = Weight, colour = Field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Production per hectare", x = "Year") +
+  #scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  ggtitle("A") + 
+  theme_bw() +
+  ggtitle("A") + 
+  theme(legend.direction = "horizontal",
+        legend.justification = "center",
+        legend.position = "top") 
+  #facet_wrap(~Field, ncol = 2)
+
+weight <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) +
+  geom_line() +
+  #geom_bar(stat = "identity") +
+  #geom_smooth(method = "lm") +
+  #geom_smooth(method = "loess", span = 0.1) +
+  #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
+  #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
+  labs(y = "Cumulative weight (kg)", 
+       x = "Year") +
+  scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  theme_bw() +
+  ggtitle("B") + 
+  theme(legend.direction = "horizontal",
+        legend.justification = "center",
+        legend.position = "top") 
+  #facet_wrap(~field, ncol = 2)
+
+library(gridExtra)
+grid.arrange(area, weight, nrow = 1)
+```
 
