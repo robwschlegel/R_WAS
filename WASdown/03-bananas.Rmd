@@ -264,7 +264,7 @@ grid.arrange(bunch, weight, nrow = 1)
 ```
 
 
-## What about per area
+## Production per hectare
 
 The fields are not all the same size which we can standardise to a 
 
@@ -296,7 +296,9 @@ dat.v2 <-
 
 ```
 
-The end
+I want to put the plot for per hectare side by side to the weight per field. I may need to adjust the level of factors.
+
+PROBLEM - I DONT KNOW HOW!!!
 
 ```{r}
 names(dat.v2)
@@ -324,7 +326,8 @@ area <- ggplot(data = dat.v2, aes(x = month, y = Weight, colour = Field)) +
   #scale_x_date(date_breaks = "12 month", date_labels = "%y") +
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
   labs(y = "Production per hectare", x = "Year") +
-  #scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  scale_y_continuous(limits=c(0,180000), 
+                     breaks = seq(0, 180000, 20000)) +
   ggtitle("A") + 
   theme_bw() +
   ggtitle("A") + 
@@ -342,7 +345,8 @@ weight <- ggplot(data = dat.sum_f.w, aes(x = Date, y = cumsum, colour = Field)) 
   #theme(axis.text.x = element_text(angle=90, vjust = 0.5)) +
   labs(y = "Cumulative weight (kg)", 
        x = "Year") +
-  scale_y_continuous(breaks = seq(0, 400000, 50000)) +
+  scale_y_continuous(limits=c(0,300000), 
+                     breaks = seq(0, 300000, 50000)) +
   theme_bw() +
   ggtitle("B") + 
   theme(legend.direction = "horizontal",
